@@ -1,6 +1,6 @@
 # customMetadata
 
-OJS3 plugin for creating custom metadata fields to submission metadata.
+OJS3 plugin for creating custom metadata fields to submission metadata. Usin a lot of code from https://github.com/pkp/ojs/tree/master/plugins/generic/openAIRE.
 
 NOTICE: this is just a concept with **a lot** of loose ends not a ready to use plugin. Requires a database table to work, see below
 
