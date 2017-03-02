@@ -13,7 +13,7 @@ TODO: input validation
 
 
 DB table needed:
-
+```
 CREATE TABLE `custom_metadata` (
   `custom_metadata_id` bigint(20) NOT NULL,
   `context_id` bigint(20) NOT NULL,
@@ -29,3 +29,4 @@ ALTER TABLE `custom_metadata`
 
 ALTER TABLE `custom_metadata`
   MODIFY `custom_metadata_id` bigint(20) NOT NULL AUTO_INCREMENT;
+```
