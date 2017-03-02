@@ -95,7 +95,12 @@ class CustomMetadataPlugin extends GenericPlugin {
 		
 		$fbv = $smarty->getFBV();
 		$form = $fbv->getForm();
-		$submission = $form->getSubmission();
+		
+		if (get_class($form) == 'SubmissionSubmitStep3Form') {
+			$submission = $form->submission;
+		} elseif (get_class($form) == 'IssueEntrySubmissionReviewForm') {
+			$submission = $form->getSubmission();
+		}
 		
 		$contextId = $this->getCurrentContextId();
 		$customMetadataDao = DAORegistry::getDAO('CustomMetadataDAO');
@@ -103,11 +108,12 @@ class CustomMetadataPlugin extends GenericPlugin {
 		while ($customField = $customFields->next()){
 			
 			$customValueField = $this->getcustomValueField($customField->getId());
+			$smarty->assign('customValue', $submission->getData($customValueField));
+			
 			
 			$smarty->assign(array(
 				'type' => $customField->getType(),
 				'localized' => $customField->getLocalized(),				
-				'customValue' => $submission->getData($customValueField),
 				'customValueId' => $customField->getId(),
 				'fieldLabel' => $customField->getLabel(),
 				'fieldDescription' => $customField->getDescription(),
